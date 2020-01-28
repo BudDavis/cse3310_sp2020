@@ -6,7 +6,7 @@ all: asio-1.12.2 src/chat_server src/chat_client src/json
 asio-1.12.2:
 	tar xzf asio-1.12.2.tar.gz
 
-CXXFLAGS+=-Wall -O0 -g -std=c++11
+CXXFLAGS+= -DASIO_STANDALONE -Wall -O0 -g -std=c++11
 CPPFLAGS+=-I./include -I./asio-1.12.2/include
 LDFLAGS+=-lpthread
 
