@@ -7,6 +7,6 @@ yum install boost-devel
 
 or
 
-apt-get instal libboost-dev
+sudo apt install libboost-dev
 
 
