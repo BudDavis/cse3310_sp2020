@@ -2,7 +2,7 @@
 
 
 all: asio-1.12.2 src/chat_server src/chat_client src/json \
-     src/shuffle_test
+     src/shuffle_test src/char_count_test
 
 asio-1.12.2:
 	tar xzf asio-1.12.2.tar.gz
@@ -14,6 +14,9 @@ LDLIBS+= -lpthread
 src/shuffle_test:src/shuffle_test.cpp src/cards.cpp
 	${CXX} -o $@ $^ -Wall -std=c++11
 
+src/char_count_test:src/char_count_test.cpp src/char_count.c
+	${CXX} -o $@ $^ -Wall -std=c++11
+
 test:
 	./src/shuffle_test
 
@@ -23,3 +26,4 @@ clean:
 	-rm -f src/chat_server		
 	-rm -f src/json
 	-rm -f src/shuffle_test
+	-rm -f src/char_count_test
