@@ -2,7 +2,8 @@
 
 
 all: asio-1.12.2 src/chat_server src/chat_client src/json \
-     src/shuffle_test src/char_count_test src/gtk_chat2
+     src/shuffle_test src/char_count_test src/gtk_chat2 \
+     src/chat_server_json src/chat_client_json
 
 asio-1.12.2:
 	tar xzf asio-1.12.2.tar.gz
@@ -32,6 +33,8 @@ clean:
 	-rm -rf asio-1.12.2
 	-rm -f src/chat_client
 	-rm -f src/chat_server		
+	-rm -f src/chat_server_json
+	-rm -f src/chat_client_json
 	-rm -f src/json
 	-rm -f src/shuffle_test
 	-rm -f src/char_count_test
