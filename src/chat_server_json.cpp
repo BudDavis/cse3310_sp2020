@@ -145,10 +145,14 @@ private:
    //std::cout << to_player.dump(2) << std::endl;
             std::string t = to_player.dump();
             chat_message sending;
-            memcpy( sending.body(), t.c_str(), t.size() );
-	    sending.body_length(t.size());
-	    sending.encode_header();
-            room_.deliver(sending);
+            if (t.size() < chat_message::max_body_length)
+            {
+               std::cout << "the size string being sent is " << t.size() << std::endl;
+               memcpy( sending.body(), t.c_str(), t.size() );
+	            sending.body_length(t.size());
+	            sending.encode_header();
+               room_.deliver(sending);
+            }
             do_read_header();
           }
           else
