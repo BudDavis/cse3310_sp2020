@@ -72,6 +72,14 @@ private:
         {
           if (!ec && read_msg_.decode_header())
           {
+            // clear out the old buffer from the last read
+            // a '\0' is a good value to make sure a string
+            // is terminated
+            for (unsigned int i=0;i<chat_message::max_body_length;i++)
+            {
+                read_msg_.body() [i] = '\0';
+            }
+
             do_read_body();
           }
           else
